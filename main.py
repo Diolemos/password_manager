@@ -40,10 +40,12 @@ password_entry.grid(column=1,row=3)
 
 ##----Buttons-----##
 
-search_button = Button(text="Search") 
+search_button = Button(text="Search") #this will fetch user data, if there is any
+search_button.grid(row=1,column=2) 
 generate_button = Button(text="Generate")
-save_button = Button(text="Save")
-
+generate_button.grid(row=3,column=2)
+save_button = Button(text="Save",width=35)
+save_button.grid(column=1, row=4, columnspan=2)
 
 
 
