@@ -64,20 +64,20 @@ def save_data():
     if len(website) == 0 or len(email) == 0 or len(password) == 0:
         messagebox.showwarning(message="Please, don't leave any field empty")
     
-        
+    elif messagebox.askokcancel(title="Save data?",message=f"Would you like to add?\nemail:{email}\nwebsite:{website},password:{password}?") :    
     ## try to read and update the json file
-    try:
-        with open(USER_DATA_PATH,'r') as file:
-            file_data = json.load(file)
-            file_data.update(data)
-        with open(USER_DATA_PATH, 'w') as file:
-            json.dump(file_data,file,indent=4)
-    except FileNotFoundError:
-        with open(USER_DATA_PATH,'w+') as file:
-            json.dump(data,file)            
-    
-    finally:
-        clear_app()
+        try:
+            with open(USER_DATA_PATH,'r') as file:
+                file_data = json.load(file)
+                file_data.update(data)
+            with open(USER_DATA_PATH, 'w') as file:
+                json.dump(file_data,file,indent=4)
+        except FileNotFoundError:
+            with open(USER_DATA_PATH,'w+') as file:
+                json.dump(data,file)            
+        
+        finally:
+            clear_app()
     
     ##except filenotfounderror createone and insert the brandnew data
 

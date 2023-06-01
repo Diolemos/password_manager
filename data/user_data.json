@@ -1,1 +1,10 @@
-{"Amazon": {"email": "default@email.com", "password": "321654"}}
+{
+    "Amazon": {
+        "email": "default@email.com",
+        "password": "321654"
+    },
+    "bestbuy": {
+        "email": "default@email.com",
+        "password": "321654654"
+    }
+}
