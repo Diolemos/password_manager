@@ -1,1 +1,1 @@
-default@email.com
+just@email.com

@@ -1,10 +1,38 @@
 from tkinter import *
 
 #-----------??------------------------------------------#
+default_email = ''
+FILE_PATH = './data/default_email.txt'
+with open(FILE_PATH, "r") as file:
+    default_email = file.read()
+
+
+
+
+
+
 
 def set_default_email():
-    pass
+     #-----Create a new window for input
+    input_window = Toplevel(window)
+    input_window.title("Set Default Email")
+    
+    # Create a label and entry widget for email input
+    email_label = Label(input_window, text="Email:")
+    email_label.pack()
+    
+    email_entry = Entry(input_window, width=25)
+    email_entry.pack()
+    
+    # Create a button to save the email
+    save_button = Button(input_window, text="Save", command=lambda: save_default_email(email_entry.get(), input_window)) 
+    save_button.pack()
 
+def save_default_email(email,input_window):
+   with open(FILE_PATH, 'w') as file:
+       file.write(email)
+   input_window.destroy()    
+   
 
 
 
@@ -38,7 +66,7 @@ password_label.grid(column=0,row=3)
 website_entry = Entry(width=25)
 website_entry.grid(column=1, row=1)
 email_entry = Entry(width=35)
-email_entry.insert(0,"default@email.com") #to be replace by variable 'default_email'
+email_entry.insert(0,default_email) #to be replace by variable 'default_email'
 email_entry.grid(column=1,row=2,columnspan=2)
 
 password_entry = Entry(width=25)
