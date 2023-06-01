@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 import json
-from password_generator import generate_password as gp 
+from password_generator import generate_password 
 import pyperclip
 
 #-----------??------------------------------------------#
@@ -48,10 +48,10 @@ def save_default_email(email,input_window):
     email_entry.insert(0,email)    
     input_window.destroy() 
 
-##---generate password-----###
+##-------------generate password------------------------###
 
 def handle_gen_password():
-    password = gp()
+    password = generate_password()
     password_entry.delete(0,END)
     password_entry.insert(0,password)
 
