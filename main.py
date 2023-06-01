@@ -4,12 +4,13 @@ import json
 
 #-----------??------------------------------------------#
 default_email = ''
-FILE_PATH = './data/default_email.txt'
+EMAIL_FILE_PATH = './data/default_email.txt'
+USER_DATA_PATH = './data/user_data.json'
 try:
-    with open(FILE_PATH, "r") as file:
+    with open(EMAIL_FILE_PATH, "r") as file:
         default_email = file.read()
 except FileNotFoundError:
-    with open(FILE_PATH,'w+') as file:
+    with open(EMAIL_FILE_PATH,'w+') as file:
         default_email = 'default@email.com'
         file.write(default_email)
 
@@ -39,7 +40,7 @@ def save_default_email(email,input_window):
    if len(email) == 0:
        messagebox.showwarning(message="Please, Don't this field empty")
    else:
-    with open(FILE_PATH, 'w') as file:
+    with open(EMAIL_FILE_PATH, 'w') as file:
         file.write(email)
     email_entry.delete(0,END)
     email_entry.insert(0,email)    
@@ -60,8 +61,13 @@ def save_data():
     
     if len(website) == 0 or len(email) == 0 or len(password) == 0:
         messagebox.showwarning(message="Please, don't leave any field empty")
+    
         
     ## try to read and update the json file
+    try:
+        with open()
+    
+    
     
     ##except filenotfounderror createone and insert the brandnew data
 
