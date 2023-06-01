@@ -4,9 +4,13 @@ from tkinter import messagebox
 #-----------??------------------------------------------#
 default_email = ''
 FILE_PATH = './data/default_email.txt'
-with open(FILE_PATH, "r") as file:
-    default_email = file.read()
-
+try:
+    with open(FILE_PATH, "r") as file:
+        default_email = file.read()
+except FileNotFoundError:
+    with open(FILE_PATH,'w+') as file:
+        default_email = 'default@email.com'
+        file.write(default_email)
 
 
 
@@ -42,6 +46,9 @@ def save_default_email(email,input_window):
    
 
 ##------ SAVE PASSWORD ---------------------------------##
+
+
+
 
 #------------UI ----------------------------------------#
 
