@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 
 #-----------??------------------------------------------#
 default_email = ''
@@ -25,16 +26,22 @@ def set_default_email():
     email_entry.pack()
     
     # Create a button to save the email
-    save_button = Button(input_window, text="Save", command=lambda: save_default_email(email_entry.get(), input_window)) 
+    save_button = Button(input_window, text="Save", command=lambda: save_default_email(email_entry.get(), input_window))
     save_button.pack()
 
 def save_default_email(email,input_window):
-   with open(FILE_PATH, 'w') as file:
-       file.write(email)
-   input_window.destroy()    
+   
+   if len(email) == 0:
+       messagebox.showwarning(message="Please, Don't this field empty")
+   else:
+    with open(FILE_PATH, 'w') as file:
+        file.write(email)
+    email_entry.delete(0,END)
+    email_entry.insert(0,email)    
+    input_window.destroy()    
    
 
-
+##------ SAVE PASSWORD ---------------------------------##
 
 #------------UI ----------------------------------------#
 
