@@ -29,13 +29,16 @@ password_label.grid(column=0,row=3)
 
 ###---Entries---###
 
-website_entry = Entry()
+website_entry = Entry(width=25)
+website_entry.grid(column=1, row=1)
+email_entry = Entry(width=35)
+email_entry.insert(0,"default@email.com") #to be replace by variable 'default_email'
+email_entry.grid(column=1,row=2,columnspan=2)
 
-email_entry = Entry()
+password_entry = Entry(width=25)
+password_entry.grid(column=1,row=3)
 
-password_entry = Entry()
-
-#Buttons
+##----Buttons-----##
 
 search_button = Button(text="Search") 
 generate_button = Button(text="Generate")
