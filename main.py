@@ -1,6 +1,8 @@
 from tkinter import *
 from tkinter import messagebox
 import json
+from password_generator import generate_password as gp 
+import pyperclip
 
 #-----------??------------------------------------------#
 default_email = ''
@@ -44,8 +46,15 @@ def save_default_email(email,input_window):
         file.write(email)
     email_entry.delete(0,END)
     email_entry.insert(0,email)    
-    input_window.destroy()    
-   
+    input_window.destroy() 
+
+##---generate password-----###
+
+def handle_gen_password():
+    password = gp()
+    password_entry.delete(0,END)
+    password_entry.insert(0,password)
+
 
 ##------ SAVE PASSWORD ---------------------------------##
 def clear_app():
@@ -79,7 +88,7 @@ def save_data():
         finally:
             clear_app()
     
-    ##except filenotfounderror createone and insert the brandnew data
+    
 
 
 
@@ -123,7 +132,7 @@ password_entry.grid(column=1,row=3)
 
 search_button = Button(text="Search") #this will fetch user data, if there is any
 search_button.grid(row=1,column=2) 
-generate_button = Button(text="Generate")
+generate_button = Button(text="Generate",command=handle_gen_password)
 generate_button.grid(row=3,column=2)
 save_button = Button(text="Save",width=35, command=save_data)
 save_button.grid(column=1, row=4, columnspan=2)
