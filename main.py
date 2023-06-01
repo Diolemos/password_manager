@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
+import json
 
 #-----------??------------------------------------------#
 default_email = ''
@@ -49,6 +50,22 @@ def save_default_email(email,input_window):
 
 
 
+def save_data():
+    #-----get data from entries
+    website = website_entry.get()
+    password = password_entry.get()
+    email = email_entry.get()
+    
+    data = {website:{'email':email,'password':password}}
+    
+    if len(website) == 0 or len(email) == 0 or len(password) == 0:
+        messagebox.showwarning(message="Please, don't leave any field empty")
+        
+    ## try to read and update the json file
+    
+    ##except filenotfounderror createone and insert the brandnew data
+
+
 
 #------------UI ----------------------------------------#
 
@@ -92,7 +109,7 @@ search_button = Button(text="Search") #this will fetch user data, if there is an
 search_button.grid(row=1,column=2) 
 generate_button = Button(text="Generate")
 generate_button.grid(row=3,column=2)
-save_button = Button(text="Save",width=35)
+save_button = Button(text="Save",width=35, command=save_data)
 save_button.grid(column=1, row=4, columnspan=2)
 
 
