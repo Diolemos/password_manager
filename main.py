@@ -90,7 +90,27 @@ def save_data():
         finally:
             clear_app()
     
+##-------------search user info ------------------------#
+
+def search_data():
+    with open(USER_DATA_PATH, 'r') as file:
+        file_data = json.load(file)
     
+    website = website_entry.get()
+    if len(website) == 0:
+        messagebox.showerror(message='Please insert a website name')
+    else:
+        try:
+            if website in file_data:
+                password_entry.delete(0,END)
+                password_entry.insert(0,file_data[website]['password'])
+                email_entry.delete(0,END)
+                email_entry.insert(0,file_data[website]['email'])    
+            else:
+                messagebox.showinfo(message=f"No records found for {website}")     
+
+        except FileNotFoundError:
+            messagebox.showerror(message="No data file found")
 
 
 
@@ -132,7 +152,7 @@ password_entry.grid(column=1,row=3)
 
 ##----Buttons-----##
 
-search_button = Button(text="Search") #this will fetch user data, if there is any
+search_button = Button(text="Search",command=search_data) #this will fetch user data, if there is any
 search_button.grid(row=1,column=2) 
 generate_button = Button(text="Generate",command=handle_gen_password)
 generate_button.grid(row=3,column=2)
