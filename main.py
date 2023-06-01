@@ -1,5 +1,11 @@
 from tkinter import *
 
+#-----------??------------------------------------------#
+
+def set_default_email():
+    pass
+
+
 
 
 #------------UI ----------------------------------------#
@@ -46,6 +52,21 @@ generate_button = Button(text="Generate")
 generate_button.grid(row=3,column=2)
 save_button = Button(text="Save",width=35)
 save_button.grid(column=1, row=4, columnspan=2)
+
+
+###-----Create menubar------###
+
+menubar = Menu(window)
+
+#------Create the settings menu
+settings = Menu(menubar, tearoff=0)
+settings.add_command(label="Set Default Email", command=set_default_email)
+
+#------- Add the settings menu to the menubar
+menubar.add_cascade(label="Settings", menu=settings)
+
+#------- Configure the window to use the menubar
+window.config(menu=menubar)
 
 
 
