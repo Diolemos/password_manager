@@ -48,7 +48,9 @@ def save_default_email(email,input_window):
    
 
 ##------ SAVE PASSWORD ---------------------------------##
-
+def clear_app():
+    website_entry.delete(0,END)
+    password_entry.delete(0,END)
 
 
 def save_data():
@@ -65,9 +67,17 @@ def save_data():
         
     ## try to read and update the json file
     try:
-        with open()
+        with open(USER_DATA_PATH,'r') as file:
+            file_data = json.load(file)
+            file_data.update(data)
+        with open(USER_DATA_PATH, 'w') as file:
+            json.dump(file_data,file,indent=4)
+    except FileNotFoundError:
+        with open(USER_DATA_PATH,'w+') as file:
+            json.dump(data,file)            
     
-    
+    finally:
+        clear_app()
     
     ##except filenotfounderror createone and insert the brandnew data
 
