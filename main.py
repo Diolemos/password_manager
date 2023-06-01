@@ -54,6 +54,8 @@ def handle_gen_password():
     password = generate_password()
     password_entry.delete(0,END)
     password_entry.insert(0,password)
+    pyperclip.copy(password)
+    messagebox.showinfo(message="Data copied to clipboard!")
 
 
 ##------ SAVE PASSWORD ---------------------------------##
