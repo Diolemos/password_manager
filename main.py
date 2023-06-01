@@ -4,7 +4,7 @@ import json
 from password_generator import generate_password 
 import pyperclip
 
-#-----------??------------------------------------------#
+#----------- SET DEFAULT EMAIL------------------------------------------#
 default_email = ''
 EMAIL_FILE_PATH = './data/default_email.txt'
 USER_DATA_PATH = './data/user_data.json'
